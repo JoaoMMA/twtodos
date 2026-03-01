@@ -1,0 +1,61 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title%}{% endblock title%}</title>
+
+        {% bootstrap_css %}
+    </head>
+
+    <body class="d-flex flex-column bg-light" style="min-height: 100vh">
+        <<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand glitch-text">Lista de tarefas</a>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="" class="text-decoration-none navbar-brand glitch-text">Olá {{ user.username }}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" class="text-decoration-none navbar-brand glitch-text">Sair</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" class="text-decoration-none navbar-brand glitch-text">Entrar</a>
+                        </li>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <main class="container flex-fill" style="padding-top: 80px;">
+            {% block content %}
+            {% endblock content %}
+        </main>
+
+        <footer class="bg-dark text-white pt-4 pb-2 mt-auto">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="text-uppercase">Lista de Tarefas</h5>
+                        <p>Organize sua rotina de forma simples e rápida.</p>
+                    </div>
+                </div>
+
+                <hr class="bg-light">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="small mb-0">
+                            &copy; 2026 João MMA - Todos os direitos reservados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        {% bootstrap_javascript %}
+    </body>

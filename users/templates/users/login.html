@@ -1,0 +1,51 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}Página de login{% endblock title %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    
+    <div class="card p-4 shadow" style="background-color: #00d1ff; border: none; border-radius: 15px; width: 100%; max-width: 500px;">
+        
+        <h2 class="text-center mb-4" style="font-weight: bold; color: #1a1a1a;">Entrar</h2>
+
+        {% if form.errors %}
+            <div class="alert alert-danger p-2 text-center" style="font-size: 0.9rem;">
+                Seu login e/ou senha estão incorretos. Tente novamente.
+            </div>
+        {% endif %}
+
+        <form method="post">
+            <style>
+                /* CSS Simplificado: O Bootstrap cuida dos inputs agora */
+                form p { margin-bottom: 1rem; text-align: left; }
+                form p label { 
+                    display: block; 
+                    font-weight: 600; 
+                    margin-bottom: 5px; 
+                    color: #1a1a1a;
+                }
+                .errorlist { display: none; } /* Oculta erros individuais no login */
+            </style>
+            
+            {% csrf_token %}
+            
+            <div class="text-start">
+                {{ form.as_p }}
+            </div>
+
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary btn-lg shadow-sm" style="background-color: #0d6efd; border: none;">
+                    Enviar
+                </button>
+            </div>
+            
+            <input type="hidden" name="next" value="{% url 'todo_list' %}">
+
+            <p class="text-center mt-3">
+                Novo por aqui? <a href="{% url 'register' %}" style="color: #1a1a1a; font-weight: bold; text-decoration: none;">Crie uma conta</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock content %}

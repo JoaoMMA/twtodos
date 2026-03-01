@@ -1,0 +1,17 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}Página inicial{% endblock title %}
+
+{% block content %}
+
+    {% if not user.is_authenticated %}
+        <h2>Bem vindo ao site de listagem de tarefas, para começar a listar suas tarefas faça <a href="{% url 'login' %}">login</a> com a sua conta</h2>
+        <br>
+        <br>
+        <h2>Caso ainda não tenha uma conta clique <a href="#">aqui para criar uma</a></h2>
+    {% else %}
+        <h2>Olá {{ user.username }}, você já está conectado!</h2>
+        <a href="{% url 'todo_list' %}" class="btn btn-primary">Ir para minhas tarefas</a>
+    {% endif %}
+
+{% endblock content %}

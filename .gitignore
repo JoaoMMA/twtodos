@@ -1,0 +1,29 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+
+# Ambiente Virtual
+.venv/
+venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Banco de dados local (SQLite)
+db.sqlite3
+db.sqlite3-journal
+
+# Configurações do Cursor / VS Code
+.vscode/
+.cursor/
+
+# Variáveis de ambiente (Segurança)
+.env
+
+# Arquivos de log
+*.log
+
+# Pasta de arquivos estáticos e media (opcional, dependendo do projeto)
+static/
+media/
